@@ -1,0 +1,14 @@
+﻿@model CineBook.Models.Booking
+@{ ViewData["Title"] = "Booking confirmed"; }
+<section class="container" style="max-width:720px;padding:60px 20px;">
+ <div class="cinema-modal" style="display:block;padding:34px;border-radius:18px;">
+  <div class="eyebrow">✦ BOOKING CONFIRMED</div><h1>Your movie night is <span>set.</span></h1>
+  <p>Your booking has been saved to the CineBook MySQL database.</p>
+  <hr /><p><strong>Booking ID:</strong> CB-@Model.Id.ToString("D6")</p>
+  <p><strong>Movie:</strong> @Model.Movie?.Title</p><p><strong>Showtime:</strong> @Model.ShowTime</p>
+  <p><strong>Tickets:</strong> @Model.NumberOfTickets</p><p><strong>Total:</strong> ₹@Model.TotalAmount.ToString("0.00")</p>
+  <p><strong>Booked by:</strong> @Model.CustomerName (@Model.CustomerEmail)</p><p><strong>Status:</strong> @Model.Status</p>
+  <a class="btn-cinema btn-cinema-primary" asp-controller="Home" asp-action="Index">Back to movies →</a>
+  <a style="margin-left:12px" asp-action="MyBookings">My bookings</a>
+ </div>
+</section>

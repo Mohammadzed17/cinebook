@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Discover Movies";
+}
+
+<section class="cinema-hero">
+    <div class="hero-backdrop" aria-hidden="true"></div>
+    <div class="hero-grain" aria-hidden="true"></div>
+    <div class="container hero-content">
+        <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT GREAT NIGHT OUT</div>
+            <h1>Stories hit<br /><span>different</span> on the<br />big screen.</h1>
+            <p class="hero-description">Find your next obsession. Explore the latest releases, pick your seats, and make it a movie night to remember.</p>
+            <div class="hero-actions">
+                <a class="btn-cinema btn-cinema-primary" href="#now-showing">Explore movies <span aria-hidden="true">↗</span></a>
+                <button class="btn-cinema btn-cinema-ghost" type="button" id="surpriseMeBtn"><span class="sparkle">✦</span> Surprise me</button>
+            </div>
+            <div class="hero-proof">
+                <div class="proof-avatars" aria-hidden="true"><span>🎬</span><span>🍿</span><span>⭐</span></div>
+                <div><strong>Good stories. Great company.</strong><small>Your seat for the moment is waiting.</small></div>
+            </div>
+        </div>
+        <div class="hero-feature" aria-label="Featured movie">
+            <div class="feature-glow"></div>
+            <div class="feature-poster-wrap">
+                <img class="feature-poster" src="https://m.media-amazon.com/images/M/MV5BYmE0MTFjOTYtMWYxNC00YjFjLTlhNzYtMWQ5ZDEwNjRmYzE1XkEyXkFqcGc%40._V1_.jpg" alt="Jailer 2 movie poster" onerror="this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=700&q=85'">
+                <div class="poster-top-label"><span class="live-dot"></span> FEATURED PICK</div>
+                <div class="poster-bottom">
+                    <span class="mini-label">ACTION · THRILLER</span>
+                    <h2>Jailer 2</h2>
+                    <div class="feature-meta"><span>★ 8.7 <small>/ 10</small></span><span>•</span><span>2h 45m</span><span>•</span><span>UA 16+</span></div>
+                    <button class="feature-book" type="button" data-feature-book="jailer-2">Find showtimes <span>→</span></button>
+                </div>
+            </div>
+            <div class="floating-note"><span class="note-icon">✦</span><span><strong>Made for movie people</strong><small>One ticket away from magic</small></span></div>
+        </div>
+    </div>
+    <div class="hero-bottom-line" aria-hidden="true"><span>01 — 05</span><span class="line"></span><span>SCROLL TO EXPLORE ↓</span></div>
+</section>
+
+<section class="trust-strip">
+    <div class="container trust-inner">
+        <div><span class="trust-icon">◈</span><span><strong>Handpicked movies</strong><small>Something for every mood</small></span></div>
+        <div><span class="trust-icon">⌁</span><span><strong>Easy booking</strong><small>Your plans, made simple</small></span></div>
+        <div><span class="trust-icon">✧</span><span><strong>Big-screen energy</strong><small>Better together</small></span></div>
+        <div class="trust-caption">THE MOVIE NIGHT CLUB <span>✳</span></div>
+    </div>
+</section>
+
+<main class="container movie-section" id="now-showing">
+    <div class="section-heading">
+        <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> ON THE BIG SCREEN</div>
+            <h2>Now <span>showing.</span></h2>
+            <p class="section-subtitle">The stories everyone's talking about.</p>
+        </div>
+        <div class="movie-count"><strong id="movieCount">10</strong><span> movies to explore</span></div>
+    </div>
+
+    <div class="movie-toolbar">
+        <label class="search-box" for="movieSearch">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="movieSearch" type="search" placeholder="Search movies, genres..." autocomplete="off" />
+            <kbd>↵</kbd>
+        </label>
+        <div class="genre-filters" id="genreFilters" aria-label="Filter by genre">
+            <button class="filter-chip active" data-genre="All" type="button">All movies</button>
+            <button class="filter-chip" data-genre="Action" type="button">Action</button>
+            <button class="filter-chip" data-genre="Sci-Fi" type="button">Sci-Fi</button>
+            <button class="filter-chip" data-genre="Drama" type="button">Drama</button>
+            <button class="filter-chip" data-genre="Thriller" type="button">Thriller</button>
+        </div>
+        <label class="sort-select-wrap">
+            <span class="sr-only">Sort movies</span>
+            <select id="movieSort" aria-label="Sort movies">
+                <option value="featured">Sort: Featured</option>
+                <option value="rating">Top rated</option>
+                <option value="title">Title A–Z</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="movie-grid" id="movieGrid" aria-live="polite">
+        <div class="loading-card">Loading the lineup<span>✦</span></div>
+        <div class="loading-card">Loading the lineup<span>✦</span></div>
+        <div class="loading-card">Loading the lineup<span>✦</span></div>
+    </div>
+    <div class="empty-state" id="emptyState" hidden>
+        <span>⌕</span><h3>No movies found</h3><p>Try another title or choose a different genre.</p>
+        <button class="btn-cinema btn-cinema-ghost" type="button" id="resetFiltersBtn">Reset filters</button>
+    </div>
+    <div class="section-footer"><span>THAT'S THE LINEUP, FOR NOW.</span><span class="footer-sparkle">✳</span><span>MORE STORIES COMING SOON</span></div>
+</main>
+
+<section class="night-banner">
+    <div class="container night-banner-inner">
+        <div class="night-orb" aria-hidden="true">✦</div>
+        <div><div class="eyebrow">MAKE IT A NIGHT</div><h2>Less scrolling.<br /><span>More storytelling.</span></h2></div>
+        <p>Pick a film, bring your people, and let the opening credits do the rest.</p>
+        <a href="#now-showing" class="btn-cinema btn-cinema-primary">Find your film <span>↗</span></a>
+    </div>
+</section>
+
+<div class="modal-backdrop" id="movieModal" hidden>
+    <section class="cinema-modal movie-detail-modal" role="dialog" aria-modal="true" aria-labelledby="modalMovieTitle">
+        <button class="modal-close" type="button" data-close-modal aria-label="Close dialog">×</button>
+        <div class="modal-poster-panel"><img id="modalPoster" src="" alt="" /></div>
+        <div class="modal-details">
+            <div class="eyebrow"><span class="eyebrow-line"></span> MOVIE DETAILS</div>
+            <div class="modal-rating" id="modalRating">★ 8.0</div>
+            <h2 id="modalMovieTitle">Movie title</h2>
+            <p class="modal-meta" id="modalMeta"></p>
+            <p class="modal-description" id="modalDescription"></p>
+            <div class="showtime-label">CHOOSE A SHOWTIME <span>Today · Demo schedule</span></div>
+            <div class="showtime-options" id="showtimeOptions"></div>
+            <div class="booking-summary" id="bookingSummary" hidden></div>
+            <button class="btn-cinema btn-cinema-primary modal-book-btn" type="button" id="confirmShowtimeBtn" disabled>Choose a showtime <span>→</span></button>
+            <p class="demo-note">Demo project · showtimes and prices are sample data.</p>
+        </div>
+    </section>
+</div>
+
+<div class="toast-message" id="toastMessage" role="status" aria-live="polite"></div>

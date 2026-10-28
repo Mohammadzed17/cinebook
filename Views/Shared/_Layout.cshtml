@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — CineBook</title>
+    <meta name="description" content="Discover movies and plan your next cinema night with CineBook." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="announcement-bar"><span class="announcement-dot"></span> YOUR FRONT-ROW SEAT TO WHAT'S NEXT <span class="announcement-separator">✳</span> MOVIE NIGHTS, UPGRADED</div>
+    <header class="site-header">
+        <div class="container nav-inner">
+            <a class="brand" asp-controller="Home" asp-action="Index" aria-label="CineBook home">
+                <span class="brand-mark"><span></span><span></span><span></span></span>
+                <span class="brand-name">cine<span>book</span><small>YOUR CINEMA CLUB</small></span>
+            </a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a class="nav-link active" asp-controller="Home" asp-action="Index">Discover</a>
+                <a class="nav-link" href="#now-showing">Movies</a>
+                <a class="nav-link" asp-controller="Booking" asp-action="MyBookings">My bookings</a>
+                <a class="nav-link" href="#cinema-footer">About</a>
+            </nav>
+            <div class="nav-actions">
+                <span class="location-pill"><span>⌖</span> Your city <span class="location-chevron">⌄</span></span>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <span class="location-pill">Hi, @User.Identity.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline">@Html.AntiForgeryToken()<button class="nav-book-btn" type="submit">Log out</button></form>
+                }
+                else
+                {
+                    <a class="nav-link" asp-controller="Account" asp-action="Login">Log in</a>
+                    <a class="nav-book-btn" asp-controller="Account" asp-action="Signup">Sign up <span>↗</span></a>
+                }
+                <button class="mobile-menu-toggle" type="button" aria-label="Scroll to movies" onclick="document.getElementById('now-showing')?.scrollIntoView({behavior:'smooth'})">☰</button>
+            </div>
+        </div>
+    </header>
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="site-footer" id="cinema-footer">
+        <div class="container footer-main">
+            <a class="brand footer-brand" asp-controller="Home" asp-action="Index">
+                <span class="brand-mark"><span></span><span></span><span></span></span>
+                <span class="brand-name">cine<span>book</span><small>YOUR CINEMA CLUB</small></span>
+            </a>
+            <p>A little less ordinary.<br />A lot more cinematic.</p>
+            <a class="footer-back-top" href="#">BACK TO TOP ↑</a>
+        </div>
+        <div class="container footer-bottom"><span>© @DateTime.Now.Year CINEBOOK · STUDENT DEMO PROJECT</span><span>MADE FOR THE LOVE OF MOVIES <b>✦</b></span><span>POSTERS LOADED FROM EXTERNAL IMAGE HOSTS</span></div>
+    </footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

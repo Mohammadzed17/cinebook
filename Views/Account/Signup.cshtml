@@ -1,0 +1,15 @@
+﻿@{ ViewData["Title"] = "Create account"; }
+<section class="container" style="max-width:520px;padding:64px 20px;">
+ <div class="cinema-modal" style="display:block;padding:32px;border-radius:18px;">
+  <div class="eyebrow">JOIN THE CINEMA CLUB</div><h1>Create your <span>account.</span></h1>
+  @if (ViewBag.Error != null) { <p role="alert" style="color:#ff7b75">@ViewBag.Error</p> }
+  <form asp-action="Signup" method="post">
+   @Html.AntiForgeryToken()
+   <label>Full name</label><input name="fullName" required maxlength="80" autocomplete="name" class="form-control" />
+   <label>Email address</label><input name="email" type="email" required maxlength="160" autocomplete="email" class="form-control" />
+   <label>Password (minimum 8 characters)</label><input name="password" type="password" required minlength="8" autocomplete="new-password" class="form-control" />
+   <label>Confirm password</label><input name="confirmPassword" type="password" required minlength="8" autocomplete="new-password" class="form-control" />
+   <button class="btn-cinema btn-cinema-primary" style="margin-top:20px;width:100%" type="submit">Create account →</button>
+  </form><p style="margin-top:20px">Already registered? <a asp-action="Login">Log in</a></p>
+ </div>
+</section>

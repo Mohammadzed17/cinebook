@@ -1,0 +1,8 @@
+﻿@model List<CineBook.Models.Booking>
+@{ ViewData["Title"] = "My bookings"; }
+<section class="container" style="padding:54px 20px;"><div class="eyebrow">YOUR CINEBOOK ACCOUNT</div><h1>My <span>bookings.</span></h1>
+@if (!Model.Any()) { <p>No bookings yet. Pick a movie and plan your next night out.</p> }
+else { <div style="overflow-x:auto"><table class="table"><thead><tr><th>Booking ID</th><th>Movie</th><th>Showtime</th><th>Tickets</th><th>Total</th><th>Status</th></tr></thead><tbody>
+@foreach(var b in Model) { <tr><td>CB-@b.Id.ToString("D6")</td><td>@b.Movie?.Title</td><td>@b.ShowTime</td><td>@b.NumberOfTickets</td><td>₹@b.TotalAmount.ToString("0.00")</td><td>@b.Status</td></tr> }
+</tbody></table></div> }
+</section>

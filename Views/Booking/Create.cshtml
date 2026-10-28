@@ -1,0 +1,18 @@
+﻿@{ ViewData["Title"] = "Book tickets"; }
+<section class="container" style="max-width:650px;padding:54px 20px;">
+ <div class="cinema-modal" style="display:block;padding:32px;border-radius:18px;">
+  <div class="eyebrow">YOUR MOVIE NIGHT</div><h1>Book your <span>tickets.</span></h1>
+  @if (ViewBag.Error != null) { <p role="alert" style="color:#ff7b75">@ViewBag.Error</p> }
+  <form asp-action="Create" method="post">
+   @Html.AntiForgeryToken()
+   <label>Movie</label><input name="movieTitle" value="@ViewBag.MovieTitle" required maxlength="150" class="form-control" />
+   <label>Ticket price (₹ per ticket)</label><input name="price" type="number" min="1" max="10000" step="1" value="@ViewBag.Price" required class="form-control" />
+   <label>Showtime</label><select name="showTime" required class="form-control">
+    @foreach (var time in new[] { "10:30 AM", "1:45 PM", "5:15 PM", "8:30 PM", "7:00 PM" }) { <option selected="@(time == (string)ViewBag.ShowTime)">@time</option> }
+   </select>
+   <label>Number of tickets (1–10)</label><input name="numberOfTickets" type="number" min="1" max="10" value="1" required class="form-control" />
+   <p style="margin-top:16px;color:#aaa">Booking as: @User.Identity?.Name. Your total is calculated and saved when you confirm.</p>
+   <button class="btn-cinema btn-cinema-primary" style="margin-top:16px;width:100%" type="submit">Confirm booking →</button>
+  </form>
+ </div>
+</section>

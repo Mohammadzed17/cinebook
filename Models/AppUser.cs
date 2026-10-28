@@ -1,0 +1,10 @@
+﻿using System.ComponentModel.DataAnnotations;
+namespace CineBook.Models;
+public class AppUser
+{
+    public int Id { get; set; }
+    [Required, StringLength(80)] public string FullName { get; set; } = "";
+    [Required, EmailAddress, StringLength(160)] public string Email { get; set; } = "";
+    [Required] public string PasswordHash { get; set; } = "";
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}

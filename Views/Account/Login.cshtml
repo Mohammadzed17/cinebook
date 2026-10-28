@@ -1,0 +1,14 @@
+﻿@{ ViewData["Title"] = "Log in"; }
+<section class="container" style="max-width:520px;padding:64px 20px;">
+ <div class="cinema-modal" style="display:block;padding:32px;border-radius:18px;">
+  <div class="eyebrow">WELCOME BACK</div><h1>Log in to <span>CineBook.</span></h1>
+  @if (ViewBag.Error != null) { <p role="alert" style="color:#ff7b75">@ViewBag.Error</p> }
+  <form asp-action="Login" method="post">
+   @Html.AntiForgeryToken()
+   <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+   <label>Email address</label><input name="email" type="email" required autocomplete="email" class="form-control" />
+   <label>Password</label><input name="password" type="password" required autocomplete="current-password" class="form-control" />
+   <button class="btn-cinema btn-cinema-primary" style="margin-top:20px;width:100%" type="submit">Log in →</button>
+  </form><p style="margin-top:20px">New to CineBook? <a asp-action="Signup">Create an account</a></p>
+ </div>
+</section>
